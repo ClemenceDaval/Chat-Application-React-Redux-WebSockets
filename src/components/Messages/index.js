@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from '../Message';
 
-const Messages = ({ messagesList }) => (
-  <div className="messages__list">
+import Message from 'src/components/Message';
+
+import './messages.scss';
+
+const Messages = ({ messages }) => (
+  <div className="messages">
     {
-      messagesList.map((message) => (
-        <Message key={message.id} {...message} />
-      ))
+      messages.map((message) => <Message key={message.id} {...message} />)
     }
-    <Message {...messagesList} />
   </div>
 );
 
 Messages.propTypes = {
-  messagesList: PropTypes.arrayOf(
-    PropTypes.shape(
-      {
-        id: PropTypes.number.isRequired,
-      },
-    ),
+  messages: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
   ).isRequired,
 };
 

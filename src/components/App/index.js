@@ -5,15 +5,15 @@ import Messages from 'src/containers/Messages';
 import Form from 'src/containers/Form';
 
 // == Import
-import './styles.css';
+import './app.scss';
 
 // == Composant
-const Chatroom = () => (
-  <div className="chatroom">
-    <Form />
+const App = () => (
+  <div className="app">
     <Messages />
+    <Form />
   </div>
 );
 
 // == Export
-export default Chatroom;
+export default App;

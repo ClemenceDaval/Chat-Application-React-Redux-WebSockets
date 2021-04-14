@@ -1,16 +1,23 @@
 import { connect } from 'react-redux';
 
 import Form from 'src/components/Form';
-import { fillOutInput } from 'src/actions';
+import { addMessage, setNewMessage } from 'src/actions';
 
-const mapStateToProps = (state) => ({
+// connection de props en lecture sur le state
+// ces props seront des tableaux, objets, booléens, numériques, string
+const mapStateToProps = (state, ownProps) => ({
   newMessage: state.newMessage,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  writeNewMessage: (newMessage) => {
-    console.log('un message est en train d\'être écrit!');
-    dispatch(fillOutInput(newMessage));
+// connection de props fonctions qui déclenchent des actions
+// ces props seraont des fonctions
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  sendMessage: () => {
+    // on souhaite emmettre l'intention : je veux créer un nouveau message
+    dispatch(addMessage());
+  },
+  setNewMessage: (newValue) => {
+    dispatch(setNewMessage(newValue));
   },
 });
 

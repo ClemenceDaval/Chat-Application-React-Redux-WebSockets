@@ -1,16 +1,16 @@
-export const FILL_OUT_INPUT = 'FILL_OUT_INPUT';
-export const CHANGE_FIRST_COLOR = 'CHANGE_FIRST_COLOR';
-export const CHANGE_LAST_COLOR = 'CHANGE_LAST_COLOR';
+// action type ADD_MESSAGE
+export const ADD_MESSAGE = 'ADD_MESSAGE';
 
-// Notre action creator changeDirection a besoin d'être configurable
-// afin qu'il gérèe l'objet action de type CHANGE_DIRECTION
-// embarquant l'information : 'dans quelle direction aller'
-// cette information sera stockée dans la propriété newDirection de l'objet action
-// à créer.
+// action creator addMessage
+export const addMessage = () => ({
+  type: ADD_MESSAGE,
+});
 
-export const fillOutInput = (text) => (
-  {
-    type: FILL_OUT_INPUT,
-    newMessage: text,
-  }
-);
+// action type SET_NEW_MESSAGE
+export const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
+
+// action creator setNewMessage
+export const setNewMessage = (value) => ({
+  type: SET_NEW_MESSAGE,
+  newMessage: value,
+});

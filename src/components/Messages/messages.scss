@@ -1,0 +1,8 @@
+@use 'src/styles/vars';
+
+.messages {
+  padding: 2*vars.$gutter;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -1,69 +1,44 @@
-/* eslint-disable arrow-body-style */
-// on stocke l'état initial de notre application
+import { getHighestId } from 'src/selectors';
+import { ADD_MESSAGE, SET_NEW_MESSAGE } from 'src/actions';
 
-import { FILL_OUT_INPUT } from "../actions";
-
-// dans une variable (constante plutôt)
 const initialState = {
-  messagesList: [
+  messages: [
     {
       id: 1,
-      content: 'salut',
-      author: 'supercat',
+      author: 'Super Chat',
+      message: 'Chalut Chat va ?',
     },
     {
       id: 2,
-      content: 'comment ça va ?',
-      author: 'supercat',
-    },
-    {
-      id: 3,
-      content: 'ba alors tu ne réponds pas ?',
-      author: 'supercat',
+      author: 'Super Chat',
+      message: 'Chat va Chat va...',
     },
   ],
   newMessage: '',
 };
 
-const reducer = (state = initialState, action = {}) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case FILL_OUT_INPUT:
+    case SET_NEW_MESSAGE:
       return {
         ...state,
         newMessage: action.newMessage,
       };
+    case ADD_MESSAGE: {
+      return {
+        ...state,
+        messages: [
+          ...state.messages,
+          {
+            id: getHighestId(state) + 1,
+            author: 'Super Chat',
+            message: state.newMessage,
+          },
+        ],
+        newMessage: '',
+      };
+    }
     default:
       return state;
   }
 };
-
-// pour l'instant notre reducer ne fait pas grand chose,
-// il se contente de renvoyer le state non modifié
-
-// en fonction de l'action à effectuer, on retourne une copie
-// du state courant auquel on change seulement ce qui est
-// induit par l'action demandée
-// switch (action.type) {
-//   case CHANGE_DIRECTION:
-//     return {
-//       ...state,
-//       direction: action.newDirection,
-//     };
-//   case CHANGE_FIRST_COLOR:
-//     return {
-//       ...state,
-//       firstColor: action.newColor,
-//       nbColors: state.nbColors + 1,
-//     };
-//   case CHANGE_LAST_COLOR:
-//     return {
-//       ...state,
-//       lastColor: action.newColor,
-//       nbColors: state.nbColors + 1,
-//     };
-//   default:
-// return state;
-// }
-// };
-
-export default reducer;
