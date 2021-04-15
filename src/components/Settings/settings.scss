@@ -17,14 +17,25 @@
     width: 30px;
     height: 30px;
     color:vars.$electric-blue;
-    transform: rotate(45deg);
-  
+    // animation: translarotation 0.5s reverse;
+
+
+    &--open{
+      animation: translarotation 0.5s ;
+    }
   }
 
   &__form{
-    display:flex;
+    display:none;
     flex-direction:column;
+    animation: closeSettingsTranslation 5s ;
 
+    &--open{
+      display:flex;
+      transform-origin: 0 0;
+      animation: openSettingsTranslation 0.5s ;
+    }
+    
     &__input{
       margin:0.3*vars.$gutter;
       padding:0.5*vars.$gutter;
@@ -42,8 +53,32 @@
       padding:0.5*vars.$gutter;
       color:vars.$light-color;
     }
-  }
+  } 
+}
 
-  
-  
+@keyframes openSettingsTranslation {
+  0% {
+    transform: translateX(180px);
+  }
+  100% {
+      transform: translateX(0px);
+    }
+}
+
+@keyframes translarotation {
+  0% {
+    transform: translateX(180px) rotate(0deg);
+  }
+  100% {
+      transform: translateX(0px) rotate(-45deg);
+    }
+}
+
+@keyframes closeSettingsTranslation {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+      transform: translateX(-200px);
+    }
 }
