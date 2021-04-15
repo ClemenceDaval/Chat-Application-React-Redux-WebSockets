@@ -16,7 +16,7 @@ const Form = ({ sendMessage, newMessage, setNewMessage }) => {
 
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <input type="text" className="form__message" value={newMessage} onChange={handleChange}/>
+      <input type="text" className="form__message" value={newMessage} onChange={handleChange} />
       <button type="submit" className="form__submit">Send</button>
     </form>
   );

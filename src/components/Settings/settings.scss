@@ -1,0 +1,49 @@
+@use 'src/styles/vars';
+
+.settings{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  margin-right:vars.$gutter;
+
+  &__button{
+    position:relative;
+    top:35px;
+    right:45px;
+    border-radius:50%;
+    border:none;
+    font-size:1.4em;
+    font-weight:500;
+    width: 30px;
+    height: 30px;
+    color:vars.$electric-blue;
+    transform: rotate(45deg);
+  
+  }
+
+  &__form{
+    display:flex;
+    flex-direction:column;
+
+    &__input{
+      margin:0.3*vars.$gutter;
+      padding:0.5*vars.$gutter;
+      border:none;
+      border-radius:0.2*vars.$gutter;
+
+
+    }
+
+    &__submitButton{
+      background-color:vars.$electric-blue;
+      border:none;
+      border-radius:0.2*vars.$gutter;
+      margin:0.3*vars.$gutter;
+      padding:0.5*vars.$gutter;
+      color:vars.$light-color;
+    }
+  }
+
+  
+  
+}

@@ -1,5 +1,5 @@
 import { getHighestId } from 'src/selectors';
-import { ADD_MESSAGE, SET_NEW_MESSAGE } from 'src/actions';
+import { ADD_MESSAGE, SET_NEW_MESSAGE, TOGGLE_SETTINGS, SET_LOGIN, SET_PASSWORD } from 'src/actions';
 
 const initialState = {
   messages: [
@@ -15,6 +15,9 @@ const initialState = {
     },
   ],
   newMessage: '',
+  open: false,
+  login: '',
+  password: '',
 };
 
 export default (state = initialState, action = {}) => {
@@ -24,7 +27,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         newMessage: action.newMessage,
       };
-    case ADD_MESSAGE: {
+    case ADD_MESSAGE:
       return {
         ...state,
         messages: [
@@ -37,7 +40,23 @@ export default (state = initialState, action = {}) => {
         ],
         newMessage: '',
       };
+    case TOGGLE_SETTINGS: {
+      const isOpen = state.open;
+      return {
+        ...state,
+        open: !isOpen,
+      };
     }
+    case SET_LOGIN:
+      return {
+        ...state,
+        login: action.login,
+      };
+    case SET_PASSWORD:
+      return {
+        ...state,
+        password: action.password,
+      };
     default:
       return state;
   }
