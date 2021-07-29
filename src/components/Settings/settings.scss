@@ -1,0 +1,84 @@
+@use 'src/styles/vars';
+
+.settings{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  margin-right:vars.$gutter;
+
+  &__button{
+    position:relative;
+    top:35px;
+    right:45px;
+    border-radius:50%;
+    border:none;
+    font-size:1.4em;
+    font-weight:500;
+    width: 30px;
+    height: 30px;
+    color:vars.$electric-blue;
+    // animation: translarotation 0.5s reverse;
+
+
+    &--open{
+      animation: translarotation 0.5s ;
+    }
+  }
+
+  &__form{
+    display:none;
+    flex-direction:column;
+    animation: closeSettingsTranslation 5s ;
+
+    &--open{
+      display:flex;
+      transform-origin: 0 0;
+      animation: openSettingsTranslation 0.5s ;
+    }
+    
+    &__input{
+      margin:0.3*vars.$gutter;
+      padding:0.5*vars.$gutter;
+      border:none;
+      border-radius:0.2*vars.$gutter;
+
+
+    }
+
+    &__submitButton{
+      background-color:vars.$electric-blue;
+      border:none;
+      border-radius:0.2*vars.$gutter;
+      margin:0.3*vars.$gutter;
+      padding:0.5*vars.$gutter;
+      color:vars.$light-color;
+    }
+  } 
+}
+
+@keyframes openSettingsTranslation {
+  0% {
+    transform: translateX(180px);
+  }
+  100% {
+      transform: translateX(0px);
+    }
+}
+
+@keyframes translarotation {
+  0% {
+    transform: translateX(180px) rotate(0deg);
+  }
+  100% {
+      transform: translateX(0px) rotate(-45deg);
+    }
+}
+
+@keyframes closeSettingsTranslation {
+  0% {
+    transform: translateX(200px);
+  }
+  100% {
+      transform: translateX(-200px);
+    }
+}

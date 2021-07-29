@@ -1,0 +1,12 @@
+@use '/src/styles/vars';
+
+.app {
+  max-width: 700px;
+  width: 80%;
+  height: 100vh;
+  background-color: vars.$light-blue;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  box-shadow: 0 0 40px rgba(black, .3);
+}
