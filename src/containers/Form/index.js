@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import Form from 'src/components/Form';
-import { addMessage, setNewMessage } from 'src/actions';
+import { addMessage } from 'src/actions';
+import { setNewMessage } from 'src/actions';
 
 // connection de props en lecture sur le state
 // ces props seront des tableaux, objets, booléens, numériques, string

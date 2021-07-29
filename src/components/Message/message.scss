@@ -1,8 +1,19 @@
 @use 'src/styles/vars';
 
 .message {
-  text-align: right;
+  text-align: left;
   margin-bottom: 2*vars.$gutter;
+
+  &--mine{
+    text-align: right;
+    
+    .message__author {
+      &::after {
+        margin-left: auto;
+        margin-right: 0;
+      }
+    }
+  }
 
   &__author {
     margin:0 2*vars.$gutter;
@@ -10,7 +21,7 @@
     
     &::after {
       content: "";
-      margin-left: auto;
+      margin-right: auto;
       display:block;
       width:0;
       border-bottom: 1rem solid vars.$light-color;

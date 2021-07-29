@@ -1,5 +1,5 @@
 import { getHighestId } from 'src/selectors';
-import { ADD_MESSAGE, SET_NEW_MESSAGE, TOGGLE_SETTINGS, SET_LOGIN, SET_PASSWORD } from 'src/actions';
+import { ADD_MESSAGE, CHANGE_FIELD_VALUE, SET_NEW_MESSAGE, TOGGLE_SETTINGS, SAVE_ALL_RECEIVED_MESSAGES, SAVE_RECEIVED_MESSAGE, SAVE_USER } from 'src/actions';
 
 const initialState = {
   messages: [
@@ -15,9 +15,12 @@ const initialState = {
     },
   ],
   newMessage: '',
-  open: false,
-  login: '',
+  // le composant settings est il ouvert ou non ?
+  isSettingsOpen: true,
+  email: '',
   password: '',
+  // nom de l'utilisateur connecté (null par défaut - pas connecté)
+  username: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -27,35 +30,38 @@ export default (state = initialState, action = {}) => {
         ...state,
         newMessage: action.newMessage,
       };
-    case ADD_MESSAGE:
+    case SAVE_ALL_RECEIVED_MESSAGES:
       return {
         ...state,
-        messages: [
-          ...state.messages,
-          {
-            id: getHighestId(state) + 1,
-            author: 'Super Chat',
-            message: state.newMessage,
-          },
-        ],
-        newMessage: '',
+        messages: action.messages,
       };
-    case TOGGLE_SETTINGS: {
-      const isOpen = state.open;
+    case SAVE_RECEIVED_MESSAGE: {
       return {
         ...state,
-        open: !isOpen,
+        messages: [...state.messages, action.message],
+        newMessage: action.message.author === state.username ? '' : state.newMessage,
       };
     }
-    case SET_LOGIN:
+    case TOGGLE_SETTINGS:
       return {
         ...state,
-        login: action.login,
+        isSettingsOpen: !state.isSettingsOpen,
       };
-    case SET_PASSWORD:
+    case CHANGE_FIELD_VALUE:
       return {
         ...state,
-        password: action.password,
+        // on indique dynamiquement (au moment de l'exécution)
+        // à quelle propriété du state on souhaite accéder
+        // grâce à la notation []
+        [action.name]: action.newValue,
+      };
+    case SAVE_USER:
+      return {
+        ...state,
+        // on garde en mémoire le username
+        username: action.username,
+        // on en profite pour refermer les settings
+        isSettingsOpen: false,
       };
     default:
       return state;

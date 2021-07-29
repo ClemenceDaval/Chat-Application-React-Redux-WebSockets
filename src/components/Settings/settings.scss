@@ -1,84 +1,56 @@
 @use 'src/styles/vars';
 
 .settings{
+
+  // background-color: vars.$dark-grey;
+  padding: 0.5rem 1rem;
+  width: 20rem;
+  height: 10rem;
   position: fixed;
-  top: 0px;
-  right: 0px;
-  margin-right:vars.$gutter;
+  right:0;
+  top:2rem;
+  transition: transform ease-out 0.5s;
+  transform: translateX(100%);
 
-  &__button{
-    position:relative;
-    top:35px;
-    right:45px;
-    border-radius:50%;
-    border:none;
-    font-size:1.4em;
-    font-weight:500;
-    width: 30px;
-    height: 30px;
-    color:vars.$electric-blue;
-    // animation: translarotation 0.5s reverse;
+  &.settings--open{
+    transform: translateX(0);
 
-
-    &--open{
-      animation: translarotation 0.5s ;
+    & .settings__toggle{
+      transform: rotate(405deg);
     }
   }
 
-  &__form{
-    display:none;
-    flex-direction:column;
-    animation: closeSettingsTranslation 5s ;
-
-    &--open{
-      display:flex;
-      transform-origin: 0 0;
-      animation: openSettingsTranslation 0.5s ;
-    }
-    
-    &__input{
-      margin:0.3*vars.$gutter;
-      padding:0.5*vars.$gutter;
-      border:none;
-      border-radius:0.2*vars.$gutter;
-
-
-    }
-
-    &__submitButton{
-      background-color:vars.$electric-blue;
-      border:none;
-      border-radius:0.2*vars.$gutter;
-      margin:0.3*vars.$gutter;
-      padding:0.5*vars.$gutter;
-      color:vars.$light-color;
-    }
-  } 
-}
-
-@keyframes openSettingsTranslation {
-  0% {
-    transform: translateX(180px);
+  &__toggle{
+    transform: rotate(0deg);
+    transition: transform ease-out 1s;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    background-color:vars.$light-color;
+    top: 0;
+    left: -2rem;
+    border-radius: 50%;
+    border: solid 3px vars.$normal-blue;
+    text-align: center;    
+    line-height:100%;
+    font-size:1.5rem;
+    color: vars.$normal-blue;
   }
-  100% {
-      transform: translateX(0px);
-    }
-}
 
-@keyframes translarotation {
-  0% {
-    transform: translateX(180px) rotate(0deg);
+  &__input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: 1px solid vars.$normal-blue;
+    margin-bottom: 1rem;
   }
-  100% {
-      transform: translateX(0px) rotate(-45deg);
-    }
-}
 
-@keyframes closeSettingsTranslation {
-  0% {
-    transform: translateX(200px);
+  &__submit {
+    border:0;
+    background: vars.$normal-blue;
+    color: vars.$light-color;
+    padding: .5rem 2rem;
+    border-radius: 3px;
+    width: 100%;
   }
-  100% {
-      transform: translateX(-200px);
-    }
 }

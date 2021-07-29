@@ -18,25 +18,61 @@ export const setNewMessage = (value) => ({
 // action type TOGGLE_SETTINGS
 export const TOGGLE_SETTINGS = 'TOGGLE_SETTINGS';
 
-// action creator
+// action creator toggleSettings
 export const toggleSettings = () => ({
   type: TOGGLE_SETTINGS,
 });
 
-// action type SET_LOGIN
-export const SET_LOGIN = 'SET_LOGIN';
+// action type CHANGE_FIELD_VALUE
+export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 
-// action creator setLogin
-export const setLogin = (value) => ({
-  type: SET_LOGIN,
-  login: value,
+// action creator changeFieldValue
+export const changeFieldValue = (name, newValue) => ({
+  type: CHANGE_FIELD_VALUE,
+  newValue: newValue,
+  name: name,
 });
 
-// action type SET_PASSWORD
-export const SET_PASSWORD = 'SET_PASSWORD';
+// action type LOGIN
+export const LOGIN = 'LOGIN';
 
-// action creator setPassword
-export const setPassword = (value) => ({
-  type: SET_PASSWORD,
-  password: value,
+// action creator login
+export const login = () => ({
+  type: LOGIN,
+});
+
+// action type SAVE_USER
+export const SAVE_USER = 'SAVE_USER';
+
+// action creator saveUser
+export const saveUser = (username) => ({
+  type: SAVE_USER,
+  username: username,
+});
+
+// action type CONNECT_WS
+export const CONNECT_WS = 'CONNECT_WS';
+
+// action creator connectWs
+export const connectWs = () => ({
+  type: CONNECT_WS,
+});
+
+// action type SAVE_RECEIVED_MESSAGE
+export const SAVE_RECEIVED_MESSAGE = 'SAVE_RECEIVED_MESSAGE';
+
+// action creator saveReceivedMessage
+export const saveReceivedMessage = (message) => ({
+  type: SAVE_RECEIVED_MESSAGE,
+  message,
+});
+
+
+// action type SAVE_ALL_RECEIVED_MESSAGES
+export const SAVE_ALL_RECEIVED_MESSAGES = 'SAVE_ALL_RECEIVED_MESSAGES';
+
+// action creator saveAllReceivedMessages
+export const saveAllReceivedMessages = (messages) => ({
+  type: SAVE_ALL_RECEIVED_MESSAGES,
+  messages,
 });
